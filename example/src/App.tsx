@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply, removeVietnameseTones } from 'zutils';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { createCalendarEvent, multiply, removeVietnameseTones } from 'zutils';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -14,6 +14,21 @@ export default function App() {
     <View style={styles.container}>
       <Text>Result: {result}</Text>
       <Text>check: {removeVietnameseTones('Thử xem sao', false)}</Text>
+      <Button
+        title="check"
+        onPress={() => {
+          createCalendarEvent(
+            'Party',
+            'My House',
+            (error: any, eventId: number) => {
+              if (error) {
+                console.error(`Error found! ${error}`);
+              }
+              console.log(`event id ${eventId} returned`);
+            }
+          );
+        }}
+      />
     </View>
   );
 }

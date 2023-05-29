@@ -21,6 +21,14 @@ export function multiply(a: number, b: number): Promise<number> {
   return Zutils.multiply(a, b);
 }
 
+export function createCalendarEvent(
+  name: string,
+  location: string,
+  callback: any
+) {
+  return Zutils.createCalendarEvent(name, location, callback);
+}
+
 export function removeVietnameseTones(str: string, lowerCase?: boolean) {
   if (lowerCase != false) str = str.toLowerCase();
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
