@@ -5,7 +5,11 @@ Zhenguet demo module
 ## Installation
 
 ```sh
-npm install zutils
+npm i @zhenguet/zutils
+```
+or
+```sh
+yarn add @zhenguet/zutils
 ```
 
 ## Usage
