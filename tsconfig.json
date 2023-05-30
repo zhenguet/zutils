@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "zutils": ["./src/index"]
+      "@zhenguet/zutils": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
