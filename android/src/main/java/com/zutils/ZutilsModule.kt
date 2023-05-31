@@ -5,6 +5,8 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ZutilsModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
@@ -26,7 +28,22 @@ class ZutilsModule(reactContext: ReactApplicationContext) :
     val eventId = 1
     callback.invoke(null, eventId)
   }
-  
+
+  @ReactMethod
+  fun getCurrentDate(callback: Callback) {
+    try {
+      val dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss")
+      val now = LocalDateTime.now()
+
+      Log.d("Check", "Now: $now")
+
+      callback.invoke(null, dtf.format(now))
+
+    } catch (e1: Exception) {
+      Log.d("DEBUG", "ERROR: $e1")
+    }
+  }
+
   companion object {
     const val NAME = "Zutils"
   }

@@ -29,6 +29,10 @@ export function createCalendarEvent(
   return Zutils.createCalendarEvent(name, location, callback);
 }
 
+export function getCurrentDate(callback: any) {
+  return Zutils.getCurrentDate(callback);
+}
+
 export function removeVietnameseTones(str: string, lowerCase?: boolean) {
   if (lowerCase != false) str = str.toLowerCase();
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
