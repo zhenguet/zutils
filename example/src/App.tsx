@@ -1,32 +1,24 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { StyleSheet, View, Text, Button } from 'react-native';
-import { createCalendarEvent, multiply, removeVietnameseTones } from 'zutils';
+import { getCurrentDate } from '@zhenguet/zutils';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [date, setDate] = useState('');
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  useEffect(() => {
+    setInterval(() => {
+      getCurrentDate((error: any, result: any) => setDate(result));
+    }, 1000);
+  }, [getCurrentDate]);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
-      <Text>check: {removeVietnameseTones('Thử xem sao', false)}</Text>
+      <Text>{date}</Text>
       <Button
         title="check"
         onPress={() => {
-          createCalendarEvent(
-            'Party',
-            'My House',
-            (error: any, eventId: number) => {
-              if (error) {
-                console.error(`Error found! ${error}`);
-              }
-              console.log(`event id ${eventId} returned`);
-            }
-          );
+          getCurrentDate((error: any, result: any) => console.log(result));
         }}
       />
     </View>
